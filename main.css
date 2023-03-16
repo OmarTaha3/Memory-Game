@@ -1,0 +1,128 @@
+*{
+  box-sizing: border-box;
+}
+body{
+  font-family: Arial, Helvetica, sans-serif;
+}
+.control-button{
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  background-color: rgba(3, 169, 244, 0.9);
+}
+.control-button span{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #f44336;
+  color: white;
+  padding: 15px 25px;
+  font-size: 30px;
+  border-radius: 6px;
+}
+.control-button span{
+  cursor: pointer;
+}
+.info-container{
+  width: 1080px;
+  margin: 20px auto 0;
+  background-color: #f6f6ff;
+  padding: 20px;
+  font-size: 24px;
+  overflow: hidden;
+  border: 2px solid #2196f3;
+}
+.info-container .name{
+  float: left;
+  width: 50%;
+}
+.info-container .tries{
+  float: right;
+  width: 50%;
+  text-align: right;
+}
+.memory-container{
+  display: flex;
+  width: 1100px;
+  flex-wrap: wrap;
+  margin: 20px auto;
+}
+.memory-container.no-clicking{
+  pointer-events: none;
+}
+.memory-container .game-box{
+  height: 200px;
+  transition: transform 0.5s;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  position: relative;
+  flex: 1 0 200px;
+  margin: 0 10px 20px;
+}
+.memory-container .game-box .front{
+  background-color: #333;
+  line-height: 200px;
+}
+.memory-container .game-box .front::before{
+  content: '?';
+  color: white;
+  font-size: 140px;
+  font-weight: bold;
+}
+.memory-container .game-box .back{
+  background-color: #607d8b;
+  transform: rotateY(180deg);
+}
+.memory-container .game-box .back img{
+  max-width: 100%;
+}
+.memory-container .game-box .face{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  backface-visibility: hidden;
+  border: 5px solid #2196f3;
+}
+.memory-container .game-box.is-flipped,
+.memory-container .game-box.has-match{
+  transform: rotateY(180deg);
+  pointer-events: none;
+}
+
+@media (max-width:767px) {
+  .control-button span{
+    font-size: 21px;
+  }
+  .info-container{
+    width: 100%;
+    font-size: 18px;
+  }
+  .memory-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .memory-container .game-box{
+    height:65px;
+    flex: 0 0 65px;
+    margin: 5px;
+  }
+  .memory-container .game-box .front{
+    line-height: 65px;
+  }
+  .memory-container .game-box .back img{
+
+  }
+  .memory-container .game-box .face{
+    border-width: 3px;
+  }
+  .memory-container .game-box .front::before{
+    font-size: 50px;
+  }
+}
